@@ -22,8 +22,8 @@ public class RuneView extends JPanel implements ValueListener, ItemListener, Ind
     private Listener listener;
 
     private BoxPicker rarityBox;
-//    private IndicatorConfigView fiveStarRuneConfig;
-//    private IndicatorConfigView sixStarRuneConfig;
+    private IndicatorConfigView fiveStarRuneConfig;
+    private IndicatorConfigView sixStarRuneConfig;
 
     public RuneView(Listener listener) {
         this.listener = listener;
@@ -37,19 +37,19 @@ public class RuneView extends JPanel implements ValueListener, ItemListener, Ind
         rarityBox.setTutorialImage(PcUtil.readImage(pcSettings.getTutorialsFolderPath() + "/screen-analyzer/rarityBox.png"));
         add(rarityBox, "cell 0 0");
 
-//        fiveStarRuneConfig = new IndicatorConfigView(this, fiveStarRuneIndicator, "Detect 5-star rune",
-//                "For detecting if rune is 5-star");
-//        add(fiveStarRuneConfig, "cell 0 1");
-//
-//        sixStarRuneConfig = new IndicatorConfigView(this, sixStarRuneIndicator, "Detect 6-star rune",
-//                "For detecting if rune is 6-star");
-//        add(sixStarRuneConfig, "cell 0 2");
+        fiveStarRuneConfig = new IndicatorConfigView(this, fiveStarRuneIndicator, "Detect 5-star rune",
+                "For detecting if rune is 5-star");
+        add(fiveStarRuneConfig, "cell 0 1");
+
+        sixStarRuneConfig = new IndicatorConfigView(this, sixStarRuneIndicator, "Detect 6-star rune",
+                "For detecting if rune is 6-star");
+        add(sixStarRuneConfig, "cell 0 2");
     }
 
     public void populateFromModel(Profile profile) {
         rarityBox.setData(toAwtRectangle(profile.getRareLevelBox()));
-//        fiveStarRuneConfig.setData(MemImageCache.getInstance().get(profile.getIndicatorFile(fiveStarRuneIndicator)));
-//        sixStarRuneConfig.setData(MemImageCache.getInstance().get(profile.getIndicatorFile(sixStarRuneIndicator)));
+        fiveStarRuneConfig.setData(MemImageCache.getInstance().get(profile.getIndicatorFile(fiveStarRuneIndicator)));
+        sixStarRuneConfig.setData(MemImageCache.getInstance().get(profile.getIndicatorFile(sixStarRuneIndicator)));
     }
 
     @Override
